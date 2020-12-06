@@ -1,30 +1,144 @@
 <div>
   <div class="submit-form">
-    <div *ngIf="!submitted">
-      <div class="form-group">
-        <label for="judul">Judul</label>
-        <input
-          type="text"
-          class="form-control"
-          id="judul"
-          required
-          [(ngModel)]="book.judul"
-          name="judul"
-        />
+    <div *ngIf="!submitted" class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="judul">Judul</label>
+          <input
+            type="text"
+            class="form-control"
+            id="judul"
+            required
+            [(ngModel)]="book.judul"
+            name="judul"
+          />
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="kategori">Kategori</label>
-        <input
-          class="form-control"
-          id="kategori"
-          required
-          [(ngModel)]="book.kategori"
-          name="kategori"
-        />
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="kategori">Kategori</label>
+          <select
+            id="kategori"
+            name="kategori"
+            [(ngModel)]="book.kategori"
+            class="form-control"
+          >
+            <option [ngValue]="kat.code" *ngFor="let kat of listkategori">
+              {{ kat.name }}
+            </option>
+          </select>
+        </div>
       </div>
 
-      <button (click)="saveBook()" class="btn btn-success">Submit</button>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="harga">Harga</label>
+          <input
+            type="number"
+            min="1000"
+            class="form-control"
+            id="harga"
+            required
+            [(ngModel)]="book.harga"
+            name="harga"
+          />
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="penulis">Penulis</label>
+          <input
+            type="text"
+            class="form-control"
+            id="penulis"
+            required
+            [(ngModel)]="book.penulis"
+            name="penulis"
+          />
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="penerbit">Penerbit</label>
+          <input
+            type="text"
+            class="form-control"
+            id="penerbit"
+            required
+            [(ngModel)]="book.penerbit"
+            name="penerbit"
+          />
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="jumlah_stok">Jumlah Stok</label>
+          <input
+            type="number"
+            min="1000"
+            class="form-control"
+            id="jumlah_stok"
+            required
+            [(ngModel)]="book.jumlah_stok"
+            name="jumlah_stok"
+          />
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="gambar">Gambar </label>
+          <input
+            type="text"
+            class="form-control"
+            id="gambar"
+            required
+            [(ngModel)]="book.gambar"
+            name="gambar"
+          />
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="aktif">Kategori</label>
+          <select
+            id="aktif"
+            name="aktif"
+            [(ngModel)]="book.aktif"
+            class="form-control"
+          >
+            <option [ngValue]="ak.val" *ngFor="let ak of listaktif">
+              {{ ak.text }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="sinopsis">Synopsis</label>
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="3"
+            class="form-control"
+            id="sinopsis"
+            required
+            [(ngModel)]="book.sinopsis"
+            name="sinopsis"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <button (click)="saveBook()" class="btn btn-success float-right">Submit</button>
+      </div>
     </div>
 
     <div *ngIf="submitted">

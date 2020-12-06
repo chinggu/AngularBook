@@ -9,9 +9,32 @@ import { BookService } from 'src/app/services/books.service';
 })
 export class AddBookComponent implements OnInit {
 
+  listaktif = [{
+    val: false,
+    text: 'Tidak Aktif'
+  },
+  {
+    val: true,
+    text: 'Aktif'
+  }
+  ];
+
+  listkategori = [{
+    name: 'Fiksi',
+    code: 'fik'
+  },
+  {
+    name: 'Thriller',
+    code: 'thril'
+  },
+  {
+    name: 'Comedy',
+    code: 'come'
+  }];
+
   book: Book = {
     judul: '',
-    kategori: '',
+    kategori: this.listkategori[0].code,
     harga: 0,
     penulis: '',
     penerbit: '',
@@ -21,6 +44,7 @@ export class AddBookComponent implements OnInit {
     gambar: '',
     aktif: false,
   };
+
   submitted = false;
 
   constructor(private tutorialService: BookService) { }
