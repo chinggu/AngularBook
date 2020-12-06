@@ -1,0 +1,35 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="judul">Judul</label>
+        <input
+          type="text"
+          class="form-control"
+          id="judul"
+          required
+          [(ngModel)]="book.judul"
+          name="judul"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="kategori">Kategori</label>
+        <input
+          class="form-control"
+          id="kategori"
+          required
+          [(ngModel)]="book.kategori"
+          name="kategori"
+        />
+      </div>
+
+      <button (click)="saveBook()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Tutorial was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newBook()">Add</button>
+    </div>
+  </div>
+</div>

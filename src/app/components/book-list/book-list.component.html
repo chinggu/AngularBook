@@ -1,0 +1,59 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by title"
+        [(ngModel)]="judul"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchJudul()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Daftar Buku</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let book of books; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveBook(book, i)"
+      >
+        {{ book.judul }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentBook">
+      <h4>Tutorial</h4>
+      <div>
+        <label><strong>Title:</strong></label> {{ currentBook.judul }}
+      </div>
+      <div>
+        <label><strong>Kategori:</strong></label>
+        {{ currentBook.kategori }}
+      </div>
+      <div>
+        <label><strong>Status:</strong></label>
+        {{ currentBook.aktif ? "Aktif" : "Tidak Aktif" }}
+      </div>
+
+      <a class="badge badge-warning" routerLink="/books/{{ currentBook.id }}">
+        Edit
+      </a>
+    </div>
+
+    <div *ngIf="!currentBook">
+      <br />
+      <p>Pilih Buku...</p>
+    </div>
+  </div>
+</div>
